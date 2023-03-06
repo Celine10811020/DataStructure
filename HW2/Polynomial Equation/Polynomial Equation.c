@@ -36,19 +36,9 @@ int main()
         {
             for(j=i-1; j<num; j++)
             {
-                //printf("\t%d + %d * %d", coefficient[j], coefficient[j+1], root[i]);
                 coefficient[j] = coefficient[j] + coefficient[j+1]*root[i];
-                //printf(" = %d\t(%d, %d)\n", coefficient[j], i, j);
             }
         }
-
-        //debug
-        /*printf("\n\t");
-        for(i=num; i>=0; i--)
-        {
-            printf("%d ", coefficient[i]);
-        }
-        printf("\n");*/
 
         sign = 0;
 
@@ -59,20 +49,33 @@ int main()
                 printf("%lld = 0\n", coefficient[i]);
             }else
             {
-                if(coefficient[i] == 0)
+                if(coefficient[i] != 0)
                 {
-                    continue;
-                }else if(coefficient[i]!=1 && coefficient[i]!=-1)
-                {
-                    printf("%lld", coefficient[i]);
+                    if(coefficient[i]!=1 && coefficient[i]!=-1)
+                    {
+                        printf("%lld", coefficient[i]);
+                    }
+
+                    if(i == 1)
+                    {
+                        printf("x ");
+                    }else
+                    {
+                        printf("x^%d ", i);
+                    }
                 }
 
-                if(i == 1)
+                if(coefficient[i-1]==0 && i>1)
                 {
-                    printf("x ");
-                }else
-                {
-                    printf("x^%d ", i);
+                    if(sign)
+                    {
+                        sign = 0;
+                    }else
+                    {
+                        sign = 1;
+                    }
+
+                    continue;
                 }
 
                 if(sign)
@@ -105,7 +108,6 @@ int main()
             }
         }
     }
-
 
     return 0;
 }
