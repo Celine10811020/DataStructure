@@ -1,0 +1,5 @@
+Sample Input
+abbccc#
+
+Sample Output
+9 / 48
